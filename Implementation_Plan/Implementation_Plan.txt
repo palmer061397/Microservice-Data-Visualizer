@@ -1,0 +1,5 @@
+***IMPLEMENTATION PLAN***
+
+1. Retrieve data from various microservices
+2. Add data from various microservices to context object
+3. Write out PlantUML code using data from context object

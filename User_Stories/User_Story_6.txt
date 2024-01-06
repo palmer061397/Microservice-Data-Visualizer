@@ -1,0 +1,3 @@
+***USER STORY 6***
+
+As a software engineer, i would like to add edges that point from the profile to the posts to make it easier to visualize what is post information and what is profile information.

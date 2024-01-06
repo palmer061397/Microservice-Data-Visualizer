@@ -1,0 +1,5 @@
+***CONTEXT PATTERN***
+
++ Retrieve data from each microservice
++ Store relevant data from each microservice in a core context object
++ Write context data out in the PlantUML code format

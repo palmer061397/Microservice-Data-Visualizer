@@ -1,0 +1,5 @@
+***DESIGN PLAN***
+
++ Convert the format of several pieces of data from different microservices into one piece of data
++ Write out data in the PlantUML code format
++ Render a PlantUML diagram

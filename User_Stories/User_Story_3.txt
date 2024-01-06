@@ -1,0 +1,3 @@
+***USER STORY 3***
+
+As a Software Engineer, I would like to create a simple PlantUML code containing nodes based on the JSON data previously ingested so we can manually validate visualizations using a online PlantUML editor.
