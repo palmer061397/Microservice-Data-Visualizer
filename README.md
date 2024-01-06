@@ -10,7 +10,7 @@ Run the application: python main.py
 
 ## Usage
 
-Since this application reads hard-coded JSON files, you can hard-code these with data from old logs. For example, you can look in a given microservice's logs and find the JSON log with the appropriate information for each microservice. Then, you can paste them into the appropriate JSON files in this application and generate a more visual plantuml diagram.
+Since this application reads hard-coded JSON files, you can hard-code these with data from old logs. For example, you can look in a given microservice's logs and find the JSON log with the appropriate information for each microservice. Then, you can paste them into the appropriate JSON files in this application and generate a more visual plantuml diagram. UPDATE - app.py file uses an api to generate random user data. 
 
 ## Contributing
 
