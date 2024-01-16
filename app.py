@@ -8,8 +8,7 @@ import traceback
 logging.basicConfig(filename='app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 def load_data():
-    """ Opens json files, assigns loaded data from file to variable
-        , then returns variables storing file data"""
+    """ Requests from website and returns "results"""
     response = requests.get(
         "https://randomuser.me/api/?format=json", timeout=5000)
     if response.status_code >= 200 & response.status_code <= 299:
