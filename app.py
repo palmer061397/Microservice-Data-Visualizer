@@ -45,7 +45,7 @@ def create_plantuml_image():
     """ (create_plantuml_function) reads plantuml.txt
          data and sends it to website to create and capture image"""
     plantuml.PlantUML("http://www.plantuml.com/plantuml/img/").processes_file(
-        "./PlantUML/plantuml.txt", outfile=None, errorfile=None)
+        "./plantuml.txt", outfile=None, errorfile=None)
 
 
 if __name__ == '__main__':
