@@ -27,8 +27,8 @@ def write_plantuml_file(res):
     # Stores nodeName and concats index of email, phone, and age
     # The format is required for plantuml
     json_options = [node_name + " : email =" + res["email"] + "\n",
-    						 node_name + " : phone = " + res["phone"] + "\n",
-    						 node_name + " : age = " + str(res["dob"]["age"]) + "\n"]
+    			    node_name + " : phone = " + res["phone"] + "\n",
+    				node_name + " : age = " + str(res["dob"]["age"]) + "\n"]
     try:
     	with open("./PlantUML/plantuml.txt", "w", encoding="utf-8") as plant_file:
         	plant_file.write("@startuml \n")
