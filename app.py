@@ -8,14 +8,13 @@ import traceback
 logging.basicConfig(filename='app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 def load_data():
-    """ Opens json files, assigns loaded data from file to variable
-        , then returns variables storing file data"""
+    """Requests api which returns json format and returns results[0]"""
     response = requests.get(
         "https://randomuser.me/api/?format=json", timeout=5000)
-    if response.status_code >= 200 & response.status_code <= 299:
+    returned_status_code = response.status_code
+    if returned_status_code >= 200 & returned_status_code <= 299:
     	return response.json()["results"][0]
-    else:
-    	return logging.exception("'response' in load_data() function: Returned Status_code = {0}".format(response.status_code))
+    return logging.exception("'response' in load_data() function: Expected status_code >=200 & <= 299 but Returned Status_code = {0}".format(response.status_code))
     	
 
 
