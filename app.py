@@ -30,7 +30,7 @@ def write_plantuml_file(res):
     			    node_name + " : phone = " + res["phone"] + "\n",
     				node_name + " : age = " + str(res["dob"]["age"]) + "\n"]
     try:
-    	with open("./PlantUML/plantuml.txt", "w", encoding="utf-8") as plant_file:
+    	with open("./plantuml.txt", "w", encoding="utf-8") as plant_file:
         	plant_file.write("@startuml \n")
         	plant_file.write("object " + node_name + " \n")
         	for i in range(3):
