@@ -2,7 +2,6 @@ import json
 import traceback
 import logging
 import plantuml
-import itertools
 
 # Configuring logging
 logging.basicConfig(filename='main.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s', level=logging.INFO)
@@ -87,14 +86,14 @@ def write_plantuml_file(profile_data, posts_data, moderation_data):
         for i in range(2):
         	try:
         		plant_file.writelines(profile_data[profile_attribute[0]] + attribute_name[i] + profile_data[profile_attribute[i+1]] + "\n")
-        	except Exception as e:
-        		logging.error(e)
+        	except Exception as error1:
+        		logging.error(error1)
         		
         for i in range(2, 7):
         	try:
         		plant_file.writelines(profile_data[profile_attribute[0]] + attribute_name[i] + str(profile_data[profile_attribute[i+1]]) + "\n")
-        	except Exception as e:
-        		logging.error(e)
+        	except Exception as error2:
+        		logging.error(error2)
 		  
         for post in posts_data:
             try:
@@ -104,17 +103,20 @@ def write_plantuml_file(profile_data, posts_data, moderation_data):
             	plant_file.write("post_" + str(post["post_id"]) + post_attribute[2] + str(post["comments"]) + "\n")
             	plant_file.write("post_" + str(post["post_id"]) + post_attribute[3] + str(post["hashtags"]) + "\n")
             	plant_file.write("post_" + str(post["post_id"]) + post_attribute[4] + post["date_published"] + "\n")
-            except Exception as e:
-            	logging.critical(e)
+            except Exception as error3:
+            	logging.critical(error3)
           
             # nameOfNodeOne -> nameOfNodeTwo : plantuml formatted
             plant_file.write(profile_data[profile_attribute[0]] + " -down-> " +
                      "post_" + str(post["post_id"]) + "\n")
 
         for moderated_post in moderation_data:
-            plant_file.write("post_" + str(moderated_post["post_id"]) + attribute_name[2] + str(moderated_post["is_reported"]) + "\n")
-            plant_file.write("post_" + str(moderated_post["post_id"]) + attribute_name[8] + str(moderated_post["is_manual"]) + "\n")
-            plant_file.write("post_" + str(moderated_post["post_id"]) + attribute_name[9] + moderated_post["reason"] + "\n")
+            try:
+            	plant_file.write("post_" + str(moderated_post["post_id"]) + attribute_name[2] + str(moderated_post["is_reported"]) + "\n")
+            	plant_file.write("post_" + str(moderated_post["post_id"]) + attribute_name[8] + str(moderated_post["is_manual"]) + "\n")
+            	plant_file.write("post_" + str(moderated_post["post_id"]) + attribute_name[9] + moderated_post["reason"] + "\n")
+            except Exception as error4:
+            	logging.error(error4)
 
             if attribute_name[9] in moderated_post:
                 plant_file.write("post_" + str(moderated_post["post_id"]) + " : reported_by = " + moderated_post["reported_by"] + "\n")
@@ -126,14 +128,14 @@ def create_plantuml_image():
          data and sends it to website to create and capture image"""
     try:
     	plantuml.PlantUML("http://www.plantuml.com/plantuml/img/").processes_file("./PlantUML/plantuml.txt", outfile=None, errorfile=None)
-    except Exception as e:
-    	logging.critical(e)
+    except Exception as error5:
+    	logging.critical(error5)
 
 if __name__ == '__main__':
     try:
     	profile, posts, moderation = load_data()
     	write_plantuml_file(profile, posts, moderation)
     	create_plantuml_image()
-    except Exception as e:
-    	logging.exception(e)
+    except Exception as error6:
+    	logging.exception(error6)
     
