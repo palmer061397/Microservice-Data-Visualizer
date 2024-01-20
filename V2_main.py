@@ -17,15 +17,15 @@ JSON_DIR = "./Docs/JSON_Responses/"
 
 # Files under JSON_Responses Directory
 json_files = ["/profile_service_response.json", #index 0
-					 "/posts_management_service_response.json", #index 1
-					 "/moderation_service_response.json"] #index 2
+	      "/posts_management_service_response.json", #index 1
+	      "/moderation_service_response.json"] #index 2
 					 
 # Directory of backup json files					 
 BACKUP_DIR = "./Docs/JSON_Responses/Backup_Files/"
 # Files under Backup_Files Directory
 backup_files = ["/profile_service_repsonse_backup.json", #index 0
-							"/posts_management_service_response_backup.json", #index 1
-							"/moderation_service_reponse_backup.json"] #index 2
+				"/posts_management_service_response_backup.json", #index 1
+				"/moderation_service_reponse_backup.json"] #index 2
 					   
 
 def load_data():
