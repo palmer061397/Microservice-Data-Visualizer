@@ -55,8 +55,8 @@ def write_plantuml_file(res):
     # Stores nodeName and concats index of email, phone, and age
     # The format is required for plantuml
     json_options = [node_name + node_data_choices["email"] + res[Profile_API_Attributes.email] + "\n",
-    				node_name + node_data_choices["phone"] + res[Profile_API_Attributes.phone] + "\n",
-    				node_name + node_data_choices["age"] + str(res[Profile_API_Attributes.dob][Profile_API_Attributes.age]) + "\n"]
+    						    node_name + node_data_choices["phone"] + res[Profile_API_Attributes.phone] + "\n",
+    						    node_name + node_data_choices["age"] + str(res[Profile_API_Attributes.dob][Profile_API_Attributes.age]) + "\n"]
     try:
     	with open("./Docs/PlantUML_Txt/plantuml.txt", "w", encoding="utf-8") as plant_txt:
         	plant_txt.write(UMLCmds.start_uml)
@@ -75,7 +75,7 @@ def create_plantuml_image():
     try:
     	plantuml.PlantUML("http://www.plantuml.com/plantuml/img/").processes_file(
         "./Docs/PlantUML_Txt/plantuml.txt", outfile='./PlantUML_Images/API_Profile_Diagram.png', errorfile=None)
-    except FileNotFoundError as e:
+    except (FileNotFoundError, plantuml.PlantUMLConnectionError, plantuml.PlantUMLError, plantuml.PlantUMLHTTPError) as e:
     	#logs exception to 'random_user_data_api_log_file.log'
     	logging.critical(e)
 
