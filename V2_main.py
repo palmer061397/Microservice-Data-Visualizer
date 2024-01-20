@@ -41,6 +41,8 @@ def load_data():
     	with open(BACKUP_DIR + backup_files[0], "r", encoding="utf-8") as profile_file:
     		profile_json = json.load(profile_file)
     		logging.info("File not found: FAILSAFE_ACTIVATED -- Loading backup file under Backup_Files DIRECTORY...")
+    except IOError as e:
+	logging.critical(e)
     try:
     	# Loads "JSON_Responses/posts_management_service_response.json""
     	with open(JSON_DIR + json_files[1], "r", encoding="utf-8") as posts_file:
