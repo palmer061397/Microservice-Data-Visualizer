@@ -1,0 +1,4 @@
+root - INFO - Line 19: request.get('https://randomuser.me/api/?format=json') successful. 
+root - INFO - Successful: web returned status code 200
+root - INFO - Successful: plantuml.txt opened and data to file written.
+root - INFO - Successful: 'random_user_data_api.py' executed
