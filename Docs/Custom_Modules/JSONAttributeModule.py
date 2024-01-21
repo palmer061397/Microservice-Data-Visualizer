@@ -1,61 +1,69 @@
 class PostAttributes:
-		object_ = "object post_"
-		post_ = "post_"
-		post_id = "post_id"
-		post_caption = "post_caption"
-		images = "images"
-		comments = "comments"
-		hashtags = "hashtags"
-		date_published = "date_published"
+	def __init__(self) -> None:
+		self.object_ = "object post_"
+		self.post_ = "post_"
+		self.post_id = "post_id"
+		self.post_caption = "post_caption"
+		self.images = "images"
+		self.comments = "comments"
+		self.hashtags = "hashtags"
+		self.date_published = "date_published"
 		
 class PostAttrEquals:
-		post_caption = " : post_caption = "
-		images = " : images = "
-		comments = " : comments = "
-		hashtags = " : hashtags = "
-		date_published = " : date_published = "
+	def __init__(self) -> None:
+		self.post_caption = " : post_caption = "
+		self.images = " : images = "
+		self.comments = " : comments = "
+		self.hashtags = " : hashtags = "
+		self.date_published = " : date_published = "
 		
 
 class ProfileAttributes:
-	name = 'name'
-	username = 'username'
-	hyperlink = 'hyperlink'
-	biography = 'biography'
-	is_reported = 'is_reported'
-	is_shadowbanned = 'is_shadowbanned'
-	number_of_followers = 'number_of_followers'
-	number_of_posts = 'number_of_posts'
-	number_of_following = 'number_of_following'
+	def __init__(self) -> None:
+		self.name = 'name'
+		self.username = 'username'
+		self.hyperlink = 'hyperlink'
+		self.biography = 'biography'
+		self.is_reported = 'is_reported'
+		self.is_shadowbanned = 'is_shadowbanned'
+		self.number_of_followers = 'number_of_followers'
+		self.number_of_posts = 'number_of_posts'
+		self.number_of_following = 'number_of_following'
 	
 class ProfileAttrEquals:
-	name = " : name = "
-	biography = " : biography = "
-	hyperlink = " : hyperlink = "
-	is_reported = " : is_reported = "
-	is_shadowbanned = " : is_shadowbanned = "
-	number_of_followers = " : number_of_followers = "
-	number_of_posts = " : number_of_posts = "
-	number_of_following = " : number_of_following = "
+	def __init__(self) -> None:
+		self.name = " : name = "
+		self.biography = " : biography = "
+		self.hyperlink = " : hyperlink = "
+		self.is_reported = " : is_reported = "
+		self.is_shadowbanned = " : is_shadowbanned = "
+		self.number_of_followers = " : number_of_followers = "
+		self.number_of_posts = " : number_of_posts = "
+		self.number_of_following = " : number_of_following = "
 	
 class ModerationAttributes:
-		post_ = "post_"
-		post_id = "post_id"
-		is_reported = "is_reported"
-		is_manual = "is_manual"
-		reason = "reason"
+	def __init__(self) -> None:
+		self.post_ = "post_"
+		self.post_id = "post_id"
+		self.is_reported = "is_reported"
+		self.is_manual = "is_manual"
+		self.reason = "reason"
 
 class ModerationAttrEquals:
-		is_reported = " : is_reported = "
-		is_manual = " : is_manual = "
-		reason = " : reason = "
+	def __init__(self) -> None:
+		self.is_reported = " : is_reported = "
+		self.is_manual = " : is_manual = "
+		self.reason = " : reason = "
 		
 class Profile_API_Attributes:
-		email = "email"
-		phone = "phone"
-		dob = "dob"
-		age = "age"
+	def __init__(self) -> None:
+		self.email = "email"
+		self.phone = "phone"
+		self.dob = "dob"
+		self.age = "age"
 		
 class UMLCmds:
-	start_uml = "@startuml \n"
-	end_uml = "@enduml \n"
-	down_diagram = " -down-> "
+	def __init__(self) -> None:
+		self.start_uml = "@startuml \n"
+		self.end_uml = "@enduml \n"
+		self.down_diagram = " -down-> "
