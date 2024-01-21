@@ -5,20 +5,24 @@ from urllib.error import HTTPError, URLError
 import plantuml
 import sys
 
-sys.path.insert(0, '/workspaces/Microservice-Data-Visualizer/Docs/Custom_Modules')
-from JSONAttributeModule import *
-
 #Configuring logging
 logging.basicConfig(filename='./Docs/Log_Files/main.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s', level=logging.INFO)
+logging.info("logging.basicConfig configured successfully.")
 
+try: # Insers custom module from different directory
+    sys.path.insert(0, './Docs/Custom_Modules')
+    from JSONAttributeModule import *
+    logging.info("Custom Module 'JSONAttributeModule' imported successfully...")
+except (ImportError, IOError) as e:
+    logging.critical(e)
 
 # Directory of JSON files
 JSON_DIR = "./Docs/JSON_Responses/"
 
 # Files under JSON_Responses Directory
 json_files = ["/profile_service_response.json", #index 0
-	      "/posts_management_service_response.json", #index 1
-	      "/moderation_service_response.json"] #index 2
+	          "/posts_management_service_response.json", #index 1
+	          "/moderation_service_response.json"] #index 2
 					 
 # Directory of backup json files					 
 BACKUP_DIR = "./Docs/JSON_Responses/Backup_Files/"
@@ -33,6 +37,7 @@ def load_data():
         # Loads "JSON_Responses/profile_service_respons.json"
         with open(JSON_DIR + json_files[0], "r", encoding="utf-8") as profile_file:
             profile_json = json.load(profile_file)
+            logging.info("profile_service_response.json loaded successfully...")
     except FileNotFoundError:
         logging.error(e + "File Not Found: FAILSAFE ACTIVATED -- Loading backup file for profile_response...")
         # Backup file "profile_service_response_backup.json"
@@ -46,6 +51,7 @@ def load_data():
         # Loads "JSON_Responses/posts_management_service_response.json"
         with open(JSON_DIR + json_files[1], "r", encoding="utf-8") as posts_file:
             posts_json = json.load(posts_file)
+            logging.info("posts_management_service_response.json loaded successfully...")
     except FileNotFoundError:
         logging.error(e + "File Not Found: FAILSAFE ACTIVATED -- Loading backup file for posts_response...")
         # Backup file "posts_management_service_response_backup.json"
@@ -59,6 +65,7 @@ def load_data():
         # Loads "JSON_Responses/moderation_service_response.json"
         with open(JSON_DIR + json_files[2], "r", encoding="utf-8") as moderation_file:
             moderation_json = json.load(moderation_file)
+            logging.info("moderation_service_response.json loaded successfully...")
     except FileNotFoundError as e:
         logging.error(e + "File Not Found: FAILSAFE ACTIVATED -- Loading backup file for moderation_response...")
         # Backup file "moderation_service_response_backup.json"
@@ -67,9 +74,13 @@ def load_data():
             logging.info("Backup File Loaded Successfully")
     except IOError as e:
         logging.critical(e)
-
-
-    return (profile_json, posts_json, moderation_json)
+    if profile_json or posts_json or moderation_json is not None:
+        logging.info("profile_json, posts_json, moderation_json : is not None: (contains data)")
+        return profile_json, posts_json, moderation_json
+    else:
+        logging.critical("File/s contain None")
+        
+    
 
 
 def write_plantuml_file(profile_data, posts_data, moderation_data):
@@ -80,13 +91,13 @@ def write_plantuml_file(profile_data, posts_data, moderation_data):
         plant_file.write("object " + profile_data[ProfileAttributes.username] + "\n")
         # nameOfNode : nameOfAttribute = attributreValue
         plant_file.writelines(profile_data[ProfileAttributes.username] + ProfileAttrEquals.name + profile_data[ProfileAttributes.name] + "\n" + #1
-        								  profile_data[ProfileAttributes.username] + ProfileAttrEquals.biography + profile_data[ProfileAttributes.biography] + "\n" + #2
-        								  profile_data[ProfileAttributes.username] + ProfileAttrEquals.hyperlink + profile_data[ProfileAttributes.hyperlink] + "\n" + #3
-        								  profile_data[ProfileAttributes.username] + ProfileAttrEquals.is_reported + str(profile_data[ProfileAttributes.is_reported]) + "\n" + #4
-        								  profile_data[ProfileAttributes.username] + ProfileAttrEquals.is_shadowbanned + str(profile_data[ProfileAttributes.is_shadowbanned]) + "\n" + #5
-        								  profile_data[ProfileAttributes.username] + ProfileAttrEquals.number_of_followers + str(profile_data[ProfileAttributes.number_of_followers]) + "\n" + #6
-        								  profile_data[ProfileAttributes.username] + ProfileAttrEquals.number_of_posts + str(profile_data[ProfileAttributes.number_of_posts]) + "\n" + #7
-        								  profile_data[ProfileAttributes.username] + ProfileAttrEquals.number_of_following + str(profile_data[ProfileAttributes.number_of_following]) + "\n") #8
+        					  profile_data[ProfileAttributes.username] + ProfileAttrEquals.biography + profile_data[ProfileAttributes.biography] + "\n" + #2
+        					  profile_data[ProfileAttributes.username] + ProfileAttrEquals.hyperlink + profile_data[ProfileAttributes.hyperlink] + "\n" + #3
+        					  profile_data[ProfileAttributes.username] + ProfileAttrEquals.is_reported + str(profile_data[ProfileAttributes.is_reported]) + "\n" + #4
+        					  profile_data[ProfileAttributes.username] + ProfileAttrEquals.is_shadowbanned + str(profile_data[ProfileAttributes.is_shadowbanned]) + "\n" + #5
+        					  profile_data[ProfileAttributes.username] + ProfileAttrEquals.number_of_followers + str(profile_data[ProfileAttributes.number_of_followers]) + "\n" + #6
+        					  profile_data[ProfileAttributes.username] + ProfileAttrEquals.number_of_posts + str(profile_data[ProfileAttributes.number_of_posts]) + "\n" + #7
+        					  profile_data[ProfileAttributes.username] + ProfileAttrEquals.number_of_following + str(profile_data[ProfileAttributes.number_of_following]) + "\n") #8
 
         for post in posts_data:
             plant_file.write(PostAttributes.object_ + str(post[PostAttributes.post_id]) + "\n")
