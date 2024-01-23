@@ -6,14 +6,17 @@ import requests
 import sys
 
 # Configuring logging module for logs
-logging.basicConfig(filename='./Docs/Log_Files/random_user_data_api_log_file.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s', level=logging.INFO)
+logging.basicConfig(filename='./Docs/Log_Files/random_user_data_api_log_file.log',
+                    filemode='w',
+                    format='%(asctime)s - Line:%(lineno)d - %(name)s - FuncName: %(funcName)s - Level: %(levelname)s - MSG: %(message)s',
+                    level=logging.INFO)
 
 try: # Insers custom module from different directory
-    sys.path.insert(0, './Docs/Custom_Modules')
+    sys.path.append('./Docs/Custom_Modules')
     from JSONAttributeModule import *
     logging.info("Custom Module 'JSONAttributeModule' imported successfully.")
 except (ImportError, IOError) as e:
-    logging.critical(e)
+    logging.exception(e)
 
 
 
@@ -26,7 +29,7 @@ def load_data():
         response = requests.get(api_address, timeout=5000)
     except (HTTPError, URLError) as e:
         # logs exception to specified log file from above
-        logging.critical(e)
+        logging.exception(e)
 
     
     if response.ok:
@@ -72,7 +75,7 @@ def create_plantuml_image():
         logging.info("Connection to plantuml.com/plantuml/img/ : successful")
         logging.info("Processing file plantuml.txt successful.")
     except (FileNotFoundError, plantuml.PlantUMLConnectionError, plantuml.PlantUMLError, plantuml.PlantUMLHTTPError) as e:
-        logging.critical(e)
+        logging.exception(e)
 
 if __name__ == '__main__':
     # assigns 'load_data()'' function to variable 'response_json''
