@@ -1,4 +1,6 @@
 import json
+import traceback
+from urllib.error import HTTPError, URLError
 import logging
 import plantuml
 import sys
