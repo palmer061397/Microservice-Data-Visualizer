@@ -17,18 +17,6 @@ def Newpage():
 def Newline():
     return "\n"
 
-def SolidLeft():
-    return " <- "
-
-def SolidRight():
-    return " -> "
-
-def DottedLeft():
-    return " <-- "
-
-def DottedRight():
-    return " --> "
-
 def ThinRight():
     return " ->> "
 
@@ -49,6 +37,24 @@ def ORight():
 
 def OLeft():
     return " o<- "
+
+def Arrow(direction="right", line="solid"):
+    if direction == "left":
+        if line == "solid":
+            return " <- "
+        elif line == "dotted":
+            return " <-- "
+        else:
+            print("line attribute invalid")
+    elif direction == "right":
+        if line == "solid":
+            return " -> "
+        elif line == "dotted":
+            return " --> "
+        else:
+            print("line attribute invalid")
+
+
 
 
 
