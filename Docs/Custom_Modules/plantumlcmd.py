@@ -38,21 +38,44 @@ def ORight():
 def OLeft():
     return " o<- "
 
-def Arrow(direction="right", line="solid"):
-    if direction == "left":
-        if line == "solid":
-            return " <- "
-        elif line == "dotted":
-            return " <-- "
-        else:
-            print("line attribute invalid")
-    elif direction == "right":
-        if line == "solid":
-            return " -> "
-        elif line == "dotted":
-            return " --> "
-        else:
-            print("line attribute invalid")
+def Arrow(direction="right", line="solid", type="default"):
+
+    # Solid left line
+    if direction == "left" and line == "solid" and type == "default":
+        return " <- "
+    # Solid right line
+    elif direction == "right" and line == "solid" and type == "default":
+        return " -> "
+    # Dotted left line
+    elif direction == "left" and line == "dotted" and type == "default":
+        return " <-- "
+    # Dotted right line
+    elif direction == "right" and line == "dotted" and type == "default":
+        return " --> "
+    # Solid o arrow right
+    elif direction == "right" and line == "solid" and type == "o":
+        return " ->o "
+    # Solid o arrow left
+    elif direction == "left" and line == "solid" and type == "o":
+        return " o<- "
+    # Dotted o arrow right
+    elif direction == "right" and line == "dotted" and type == "o":
+        return " -->o "
+    # Dotted o arrow left
+    elif direction == "left" and line == "dotted" and type == "o":
+        return " o<-- "
+    # Solid x arrow right
+    elif direction == "right" and line == "solid" and type =="x":
+        return " ->x "
+    # Solid x arrow left
+    elif direction == "left" and line == "solid" and type == "x":
+        return " x<- "
+    # Dotted x arrow right
+    elif direction == "right" and line == "dotted" and type == "x":
+        return " -->x "
+    # Dotted x arrow left
+    elif direction == "left" and line == "dotted" and type == "x":
+        return " x<-- "
 
 
 
