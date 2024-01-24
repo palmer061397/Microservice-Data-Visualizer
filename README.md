@@ -11,7 +11,7 @@ Run the application: python main.py
 ## Usage
 
 Since this application reads hard-coded JSON files, you can hard-code these with data from old logs. For example, you can look in a given microservice's logs and find the JSON log with the appropriate information for each microservice. Then, you can paste them into the appropriate JSON files in this application and generate a more visual plantuml diagram:
- __File Paths__: When using these custom modules, ensure you change the file path/Directory to properly import these modules.
+- __File Paths__: When using these custom modules, ensure you change the file path/Directory to properly import these modules.
 - UPDATE - random_user_data_api_app.py file uses an api to generate random user data.
 - UPDATE - New Custom modules have been added and are in the development phase, so they are partially incomplete and only have limited functionality at this moment.
 - UPDATE - TestingModules.py - is a file to test the new Custom Modules generating png files of plantuml diagrams.
